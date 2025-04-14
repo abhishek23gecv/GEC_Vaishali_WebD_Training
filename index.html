@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-image: url("/Task/images/bg2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* Navigation Bar */
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        padding: 15px;
+        width: 90%;
+        max-width: 500px;
+        background: rgba(0, 0, 0, 0.5);
+        gap: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: aqua;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      nav a i {
+        font-size: 20px; /* Increased icon size */
+        color: aqua;
+        transition: color 0.3s ease-in-out;
+      }
+
+      nav a span {
+        font-size: 14px;
+        color: white;
+      }
+
+      nav a:hover {
+        color: rgb(255, 0, 115);
+        transform: translateY(-2px);
+      }
+
+      nav a:hover i {
+        color: rgb(255, 0, 115);
+      }
+nav a:hover span {
+        color: rgb(255, 0, 115);
+      }
+      /* Profile Image */
+      .profile-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 3px solid rgb(0, 221, 255);
+        margin-top: 40px;
+        transition: all 0.3s ease;
+      }
+
+      .profile-img:hover {
+        border: 3px solid rgb(255, 0, 115);
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      /* Introduction Text */
+      #intro {
+        font-size: 18px;
+        color: rgb(251, 254, 255);
+        font-family: cursive;
+        max-width: 800px;
+        padding: 15px;
+        line-height: 1.6;
+      }
+
+      #intro span {
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      #intro span:hover {
+        color: rgb(255, 0, 115);
+        cursor: pointer;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        margin-top: auto;
+        width: 100%;
+        padding: 15px;
+        color: rgba(236, 238, 240, 0.8);
+      }
+
+      .follow {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .follow a i {
+        font-size: 30px;
+        color: #00fffb;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .follow a i:hover {
+        transform: translateY(-2px) scale(1.1);
+        color: rgb(255, 0, 115);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: row;
+          justify-content: center;
+          gap: 15px;
+        }
+
+        #intro {
+          font-size: 16px;
+          padding: 10px;
+        }
+
+        .profile-img {
+          width: 10rem;
+          height: 10rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          gap: 10px;
+        }
+
+        .profile-img {
+          width: 8rem;
+          height: 8rem;
+        }
+
+        #intro {
+          font-size: 14px;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html">
+        <i class="bx bx-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="task.html">
+        <i class="bx bx-list-check"></i>
+        <span>Tasks</span>
+      </a>
+      <a href="about.html" target="_blank">
+        <i class="bx bx-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="#">
+        <i class="bx bx-envelope"></i>
+        <span>Contacts</span>
+      </a>
+    </nav>
+
+    <img class="profile-img" src="/Task/images/av3.jpg" alt="Profile Picture" />
+
+    <p id="intro">
+      <span>Hi! I'm a passionate web developer currently pursuing my degree at</span>
+      <span>Government Engineering College Vaishali.</span>
+      <span>I specialize in creating dynamic, user-friendly websites with modern</span>
+      <span>technologies. Whether it's front-end design, back-end development, or</span>
+      <span>full-stack solutions, I love building seamless digital experiences.</span>
+    </p>
+
+    <footer>
+      <h4>Developer: Abhishek Kumar</h4>
+      <h5>You can reach me also on social media.</h5>
+      <div class="follow">
+        <a href="https://instagram.com/abhishek_7o1" target="_blank"
+          ><i class="bx bxl-instagram"></i
+        ></a>
+        <a href="https://github.com/abhishek23gecv" target="_blank"
+          ><i class="bx bxl-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/abhishek-kumar-050577268/"
+          target="_blank"
+          ><i class="bx bxl-linkedin-square"></i
+        ></a>
+      </div>
+      <p>© 2025 All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

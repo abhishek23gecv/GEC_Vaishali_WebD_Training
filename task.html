@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link
+    href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+
+    <style>
+        body {
+            background-image: url("/Task/images/bg2.jpg");
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }   
+     
+      /* Navigation Bar */
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        padding: 15px;
+        width: 90%;
+        max-width: 500px;
+        background: rgba(0, 0, 0, 0.5);
+        gap: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: aqua;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      nav a i {
+        font-size: 20px; /* Increased icon size */
+        color: aqua;
+        transition: color 0.3s ease-in-out;
+      }
+
+      nav a span {
+        font-size: 14px;
+        color: white;
+      }
+
+      nav a:hover {
+        color: rgb(255, 0, 115);
+        transform: translateY(-2px);
+      }
+
+      nav a:hover i {
+        color: rgb(255, 0, 115);
+      }
+nav a:hover span {
+        color: rgb(255, 0, 115);
+      }
+
+        h1 {
+            color: aqua;
+            font-size: 3rem;
+            margin: 20px 0;
+            transition: color 0.3s ease-in-out;
+        }
+        h1:hover {
+            color: rgb(255, 0, 115);
+
+        }
+        .task-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            max-width: 90%;
+        }
+        a {
+            text-decoration: none;
+        }
+        .task-box {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(180, 6, 127);
+            background-color: rgb(35, 48, 55);
+            border: 2px solid rgb(0, 195, 255);
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgb(0, 195, 255);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .task-box:hover {
+            transform: scale(0.9);
+            border-radius: 20px;
+            border: 3px solid rgb(12, 158, 187);
+            color: rgb(73, 210, 210);
+            background-color: rgb(93, 165, 179);
+            color: rgb(180, 6, 127) ;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .task-box {
+                width: 120px;
+                height: 120px;
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .task-container {
+                gap: 10px;
+            }
+            .task-box {
+                width: 100px;
+                height: 100px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <a href="index.html">
+          <i class="bx bx-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="task.html">
+          <i class="bx bx-list-check"></i>
+          <span>Tasks</span>
+        </a>
+        <a href="about.html" target="_blank">
+          <i class="bx bx-info-circle"></i>
+          <span>About</span>
+        </a>
+        <a href="contacts.html">
+          <i class="bx bx-envelope"></i>
+          <span>Contacts</span>
+        </a>
+      </nav>
+    <h1>Full Stack Development Using LAMP Stack</h1>
+    <div class="task-container">
+        <a href="task_1.html"><div class="task-box">Task 1</div></a>
+        <a href="./task2/HTML Paragraph+CSS2.html"><div class="task-box">Task 2</div></a>
+        <a href="./task3/HTML Paragraph+CSS3.html"><div class="task-box">Task 3</div></a>
+        <a href="./task4/HTML Background Images+CSS.html"><div class="task-box">Task 4</div></a>
+        <a href="./task5/Minor Project-1.html"><div class="task-box">Task 5</div></a>
+        <a href="./task6/HTML Tables-I.html"><div class="task-box">Task 6</div></a>
+        <a href="./task7/HTML Tables-II.html"><div class="task-box">Task 7</div></a>
+        <a href="about.html"><div class="task-box">Task 8</div></a>
+        <a href="./task9/HTML Divison.html"><div class="task-box">Task 9</div></a>
+        <a href="./task10/HTML Forms.html"><div class="task-box">Task 10</div></a>
+        <a href="./task11/Minor Project-3.html"><div class="task-box">Task 11</div></a>
+        <a href="index.html"><div class="task-box">Task 12</div></a>
+        <a href="./task13/JavaScript_Basic.html"><div class="task-box">Task 13</div></a>
+        <a href="./task14/JavaScript- Conditional,Loops,Functions.html"><div class="task-box">Task 14</div></a>
+        <a href="./task15/JavaScript-Arrays.html"><div class="task-box">Task 15</div></a>
+        <a href="./task16/JavaScript- DOM & Events.html"><div class="task-box">Task 16</div></a>
+        <a href="./task17/JavaScript-Exception Handling.html"><div class="task-box">Task 17</div></a>
+        <a href="./task18/SQL- Creating Database and Table.html"><div class="task-box">Task 18</div></a>
+        <a href="./task19/SQL-Alter Table and Insert Data.html"><div class="task-box">Task 19</div></a>
+        <a href="./task20/SQL-Select Query.html"><div class="task-box">Task 20</div></a>
+        <a href="./task21/Final Project.html"><div class="task-box">Task 21</div></a>
+    </div>
+</body>
+</html>
