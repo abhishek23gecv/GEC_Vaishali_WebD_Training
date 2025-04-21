@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-13</title>
+    <style>
+        /* Modern color scheme and styling */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --background-color: #f8f9fa;
+            --card-bg-color: #ffffff;
+            --code-bg-color: #1d1e22;
+            --code-color: #f8f8f2;
+            --text-color: #333333;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic styling with smooth transitions */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Container with better spacing and layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Program cards with hover effects */
+        .program-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 .program-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced code box with syntax highlighting colors */
+        .code-box {
+            background-color: var(--code-bg-color);
+            color: var(--code-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .code-box .keyword {
+            color: #ff79c6;
+        }
+
+        .code-box .string {
+            color: #f1fa8c;
+        }
+
+        .code-box .number {
+            color: #bd93f9;
+        }
+
+        .code-box .function {
+            color: #50fa7b;
+        }
+
+        .code-box .comment {
+            color: #6272a4;
+        }
+
+        /* Improved button styling with animation */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Button icons */
+        .button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Improved output section styling */
+        .output {
+            background-color: #f3f4f6;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .output.has-output {
+            background-color: #e8f5e9;
+        }
+
+        .output-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .program-card {
+                padding: 15px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JavaScript Programs</h1>
+        <div class="subtitle">Interactive code examples with real-time outputs</div>
+    </header>
+
+    <div class="container">
+        <!-- Program 1 -->
+        <div class="program-card">
+            <h2><span class="program-number">1</span> Print Name and Address</h2>
+            <div class="code-box">
+<span class="keyword">let</span> name = <span class="string">"Abhishek Kumar"</span>;
+<span class="keyword">let</span> address = <span class="string">"GEC Vaishali Boys Hostel, Vaishali, 844115."</span>;
+
+console.log(<span class="string">"Name:"</span>, name);
+console.log(<span class="string">"Address:"</span>, address);</div>
+            <div class="buttons-container">
+                <button onclick="printNameAddress()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output1')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output1" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output1-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card">
+            <h2><span class="program-number">2</span> Check If Value and Data-Type are Same</h2>
+            <div class="code-box">
+<span class="keyword">let</span> a = <span class="number">10</span>;
+<span class="keyword">let</span> b = <span class="string">'10'</span>;
+
+<span class="keyword">if</span> (a === b) {
+  console.log(<span class="string">"Value and data-type are the same."</span>);
+} <span class="keyword">else</span> {
+  console.log(<span class="string">"Value and/or data-type are different."</span>);
+}</div>
+            <div class="buttons-container">
+                <button onclick="checkValueType()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output2')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output2" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output2-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card">
+            <h2><span class="program-number">3</span> Add Two Strings and Convert to Uppercase</h2>
+            <div class="code-box">
+<span class="keyword">let</span> str1 = <span class="string">"hello"</span>;
+<span class="keyword">let</span> str2 = <span class="string">"world"</span>;
+
+<span class="keyword">let</span> result = (str1 + str2).toUpperCase();
+console.log(result);</div>
+            <div class="buttons-container">
+                <button onclick="addStrings()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output3')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output3" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output3-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 4 -->
+        <div class="program-card">
+            <h2><span class="program-number">4</span> Convert String Length to Bytes</h2>
+            <div class="code-box">
+<span class="function">function</span> getByteLength(str) {
+  <span class="keyword">return</span> <span class="keyword">new</span> TextEncoder().encode(str).length;
+}
+
+<span class="keyword">let</span> input = <span class="string">"Hello "</span>;
+console.log(<span class="string">`Byte length: ${getByteLength(input)}`</span>);</div>
+            <div class="buttons-container">
+                <button onclick="convertStringToBytes()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output4')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output4" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output4-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 5 -->
+        <div class="program-card">
+            <h2><span class="program-number">5</span> Round a Number to Specified Digits</h2>
+            <div class="code-box">
+<span class="function">function</span> roundToDigits(num, digits) {
+  <span class="keyword">return</span> parseFloat(num.toFixed(digits));
+}
+
+console.log(roundToDigits(<span class="number">3.1415926</span>, <span class="number">2</span>)); <span class="comment">// Output: 3.14</span>
+console.log(roundToDigits(<span class="number">123.456789</span>, <span class="number">4</span>)); <span class="comment">// Output: 123.4568</span></div>
+            <div class="buttons-container">
+                <button onclick="roundNumber()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output5')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output5" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output5-content">Run the program to see the output</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 JavaScript Programs - Interactive code examples</p>
+    </footer>
+
+    <script>
+        /* Function to clear output */
+        function clearOutput(outputId) {
+            document.getElementById(outputId + '-content').innerText = 'Run the program to see the output';
+            document.getElementById(outputId).classList.remove('has-output');
+        }
+
+        /* Update output with animation */
+        function updateOutput(outputId, text) {
+            const outputElement = document.getElementById(outputId);
+            const contentElement = document.getElementById(outputId + '-content');
+            
+            // Format output text (replace \n with <br> for HTML display)
+            const formattedText = text.replace(/\n/g, '<br>');
+            
+            // Add animation class
+            outputElement.classList.add('has-output');
+            
+            // Update content
+            contentElement.innerHTML = formattedText;
+        }
+
+        /* Program 1: Print name and address */
+        function printNameAddress() {
+            let name = "Abhishek Kumar";
+            let address = "GEC Vaishali Boys Hostel, Vaishali, 844115.";
+            updateOutput('output1', `Name: ${name}\nAddress: ${address}`);
+        }
+
+        /* Program 2: Check value and data-type */
+        function checkValueType() {
+            let a = 10;
+            let b = '10';
+            let result = (a === b) ? "Value and data-type are the same." : "Value and/or data-type are different.";
+            updateOutput('output2', result);
+        }
+
+        /* Program 3: Add strings and convert to uppercase */
+        function addStrings() {
+            let str1 = "hello";
+            let str2 = "world";
+            let result = (str1 + str2).toUpperCase();
+            updateOutput('output3', result);
+        }
+
+        /* Program 4: Convert string length to bytes */
+        function convertStringToBytes() {
+            function getByteLength(str) {
+                return new TextEncoder().encode(str).length;
+            }
+            let input = "Hello ";
+            let result = `Input string: "${input}"\nByte length: ${getByteLength(input)}`;
+            updateOutput('output4', result);
+        }
+
+        /* Program 5: Round number to specified digits */
+        function roundNumber() {
+            function roundToDigits(num, digits) {
+                return parseFloat(num.toFixed(digits));
+            }
+            let result1 = roundToDigits(3.1415926, 2);
+            let result2 = roundToDigits(123.456789, 4);
+            updateOutput('output5', `3.1415926 rounded to 2 digits: ${result1}\n123.456789 rounded to 4 digits: ${result2}`);
+        }
+    </script>
+</body>
+</html>

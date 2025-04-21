@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .card-hover:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 font-sans leading-relaxed text-gray-800">
+    <!-- Header -->
+    <header class="bg-green-600 text-white sticky top-0 z-50 shadow-md">
+      <nav class="p-4 max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Tasty Treats</h1>
+        <div class="space-x-6 text-sm">
+          <a href="task_5.html" class="hover:underline transition">Home</a>
+          <a href="recipe.html" class="hover:underline transition">Recipes</a>
+          <a href="task_5.html" class="hover:underline transition">About Me</a>
+        </div>
+      </nav>
+      <div class="text-center pb-6">
+        <h2 class="text-4xl font-bold">Delicious Recipes</h2>
+        <p class="text-base mt-2">Discover origins, ingredients, and specialties from around the world</p>
+      </div>
+    </header>
+
+  <main class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+
+        <!-- Indian Recipes -->
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+      <h2 class="text-xl font-semibold mb-2">Litti Chokha</h2>
+      <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Bihar, India</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Wheat flour, Sattu, Garlic, Mustard oil, Eggplant, Tomato, Potato</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Bake stuffed dough balls and serve with mashed smoked vegetables seasoned with mustard oil and spices.</p>
+      <p class="text-sm text-gray-600"><strong>Specialty:</strong> Traditional rustic flavor with smoky undertones.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+      <h2 class="text-xl font-semibold mb-2">Khajuria</h2>
+      <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Bihar, India</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Wheat flour, Jaggery, Fennel seeds, Ghee</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Prepare dough with jaggery and spices, shape into discs and deep fry till golden.</p>
+      <p class="text-sm text-gray-600"><strong>Specialty:</strong> Sweet and crunchy festive snack.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+      <h2 class="text-xl font-semibold mb-2">Thekua</h2>
+      <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Bihar, India</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Wheat flour, Jaggery, Coconut, Cardamom, Ghee</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Mix ingredients into dough, mold and fry until crisp and brown.</p>
+      <p class="text-sm text-gray-600"><strong>Specialty:</strong> A traditional offering during Chhath Puja, loved for its crunch and sweetness.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+        <h2 class="text-xl font-semibold mb-2">Paneer Butter Masala</h2>
+        <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> India</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Paneer, Tomatoes, Cream, Butter, Spices</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Cook tomato gravy, add cream and spices, simmer with paneer cubes.</p>
+        <p class="text-sm text-gray-600"><strong>Specialty:</strong> Rich and creamy North Indian delicacy.</p>
+      </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+      <h2 class="text-xl font-semibold mb-2">Dal Pitha</h2>
+      <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Bihar, India</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Rice flour, Chana dal, Spices, Mustard seeds</p>
+      <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Fill rice dough with spicy dal paste and steam until soft and cooked through.</p>
+      <p class="text-sm text-gray-600"><strong>Specialty:</strong> Healthy and protein-rich traditional steamed snack.</p>
+    </div>
+    <!-- international recipes -->
+    <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+        <h2 class="text-xl font-semibold mb-2">Spaghetti Carbonara</h2>
+        <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Italy</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Spaghetti, Eggs, Pancetta, Parmesan, Pepper</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Cook pasta, mix with eggs, pancetta, and cheese off heat for creamy texture.</p>
+        <p class="text-sm text-gray-600"><strong>Specialty:</strong> Creamy texture without using cream.</p>
+      </div>
+  
+      <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+        <h2 class="text-xl font-semibold mb-2">Sushi</h2>
+        <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Japan</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Sushi rice, Nori, Raw fish, Vegetables, Vinegar</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Roll seasoned rice and fillings in nori using a bamboo mat, slice and serve.</p>
+        <p class="text-sm text-gray-600"><strong>Specialty:</strong> Minimalist preparation with delicate balance of flavors.</p>
+      </div>
+  
+      <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+        <h2 class="text-xl font-semibold mb-2">Tacos</h2>
+        <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> Mexico</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Tortillas, Meat/Beans, Salsa, Lettuce, Cheese</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Fill tortillas with desired fillings, top with salsa and cheese.</p>
+        <p class="text-sm text-gray-600"><strong>Specialty:</strong> Street food favorite with endless variations.</p>
+      </div>
+  
+      <div class="bg-white rounded-2xl shadow-lg p-4 card-hover">
+        <h2 class="text-xl font-semibold mb-2">Croissant</h2>
+        <p class="text-sm text-gray-600 mb-1"><strong>Origin:</strong> France</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Ingredients:</strong> Flour, Butter, Yeast, Sugar, Salt</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Making Process:</strong> Layer dough with butter, fold and roll repeatedly, bake until golden.</p>
+        <p class="text-sm text-gray-600"><strong>Specialty:</strong> Buttery, flaky pastry perfect for breakfast.</p>
+      </div>
+  </main>
+
+  <footer class="text-center p-4 text-gray-600 mt-6">
+    &copy; 2025 Recipe World. All rights reserved.
+  </footer>
+</body>
+
+</html>

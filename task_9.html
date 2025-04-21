@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Ye HTML ka document type hai -->
+    <meta charset="UTF-8">
+    <!-- UTF-8 character encoding use kar rahe hain -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport ka size mobile devices ke liye set kar rahe hain -->
+    <title>Task-9</title>
+    <!-- Browser ke tab mein dikhne wala title -->
+    <style>
+        /* CSS styling shuru karte hain */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* Body ke liye font family set kiya hai */
+            margin: 0;
+            /* Body ka margin zero kar diya hai */
+            padding: 0;
+            /* Body ka padding bhi zero kar diya hai */
+            background-color: #f5f5f5;
+            /* Background color light grey set kiya hai */
+        }
+        
+        .container {
+            display: flex;
+            /* Flex container banaya hai taki sections ek line mein rahe */
+            justify-content: space-between;
+            /* Sections ke beech equal space rakhne ke liye */
+            padding: 20px;
+            /* Container ke andar spacing ke liye padding */
+            max-width: 1200px;
+            /* Container ki maximum width set ki hai */
+            margin:  200px;
+            /* Container ko center mein lane ke liye */
+            gap: 20px;
+            /* Sections ke beech gap set kiya hai */
+            flex-wrap: wrap;
+            /* Chote screens par sections wrap honge */
+        }
+        
+        .section {
+            text-align: center;
+            /* Section ke andar text center mein align kiya hai */
+            background-color: white;
+            /* Section ka background white set kiya hai */
+            border-radius: 8px;
+            /* Section ke corners round kiye hain */
+            padding: 20px;
+            /* Section ke andar space ke liye padding */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            /* Section ke liye subtle shadow add kiya hai */
+            transition: transform 0.3s;
+            /* Hover effect ke liye smooth transition */
+            flex: 1;
+            /* Sections ko equal width dene ke liye */
+            min-width: 200px;
+            /* Section ki minimum width set ki hai */
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            /* Hover karne par section thoda upar uthega */
+            box-shadow: 0 4px 10px rgba(30, 78, 223, 0.5);
+        }
+        
+        .icon {
+            width: 80px;
+            /* Icon ka width set kiya hai */
+            height: 80px;
+            /* Icon ka height set kiya hai */
+            margin: 0 auto 15px;
+            /* Icon ko center mein rakhne ke liye margin */
+            display: flex;
+            /* Icon ko center mein align karne ke liye flex */
+            align-items: center;
+            /* Icon ko vertically center kiya hai */
+            justify-content: center;
+            /* Icon ko horizontally center kiya hai */
+        }
+        
+        .icon svg {
+            max-width: 100%;
+            /* SVG icon ka max width set kiya hai */
+            max-height: 100%;
+            /* SVG icon ka max height set kiya hai */
+        }
+        
+        h2 {
+            color: #333;
+            /* Heading ka color dark grey set kiya hai */
+            margin-top: 15px;
+            /* Heading ke upar space ke liye */
+            font-size: 20px;
+            /* Heading ka font size set kiya hai */
+        }
+        
+        /* Responsive design ke liye Media Queries */
+        @media (max-width: 900px) {
+            /* 900px se kam width ke screens ke liye */
+            .section {
+                min-width: 45%;
+                /* Medium screens par 2 columns mein sections dikhenge */
+                margin-bottom: 20px;
+                /* Neeche space add kiya hai */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            /* 600px se kam width ke screens ke liye */
+            .section {
+                min-width: 100%;
+                /* Mobile screens par full width mein sections dikhenge */
+            }
+            
+            .container {
+                flex-direction: column;
+                /* Mobile par sections vertical stack honge */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Body content shuru karte hain -->
+    <div class="container">
+        <!-- Main container div hai jisme sab sections hai -->
+        <div class="section">
+            <!-- Ye pehla section hai - Home ke liye -->
+            <div class="icon">
+                <!-- Home ka icon yahan hai -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- SVG icon ka code -->
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <!-- Ghar ka outline bana raha hai -->
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    <!-- Ghar ka darwaza bana raha hai -->
+                </svg>
+            </div>
+            <h2>Home</h2>
+            <!-- Home ka heading -->
+        </div>
+        
+        <div class="section">
+            <!-- Ye dusra section hai - About ke liye -->
+            <div class="icon">
+                <!-- About ka icon yahan hai -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#27ae60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- SVG icon ka code -->
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <!-- User icon ka bottom part bana raha hai -->
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <!-- User icon ka head circle bana raha hai -->
+                </svg>
+            </div>
+            <h2>About</h2>
+            <!-- About ka heading -->
+        </div>
+        
+        <div class="section">
+            <!-- Ye teesra section hai - Gallery ke liye -->
+            <div class="icon">
+                <!-- Gallery ka icon yahan hai -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- SVG icon ka code -->
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <!-- Photo frame bana raha hai -->
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <!-- Photo mein small circle bana raha hai -->
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                    <!-- Photo ka landscape scene bana raha hai -->
+                </svg>
+            </div>
+            <h2>Gallery</h2>
+            <!-- Gallery ka heading -->
+        </div>
+        
+        <div class="section">
+            <!-- Ye chautha section hai - Contact ke liye -->
+            <div class="icon">
+                <!-- Contact ka icon yahan hai -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- SVG icon ka code -->
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <!-- Email envelope ka outline bana raha hai -->
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                    <!-- Email envelope ka top flap bana raha hai -->
+                </svg>
+            </div>
+            <h2>Contact</h2>
+            <!-- Contact ka heading -->
+        </div>
+    </div>
+    <!-- Container div end -->
+</body>
+</html>

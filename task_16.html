@@ -1,0 +1,431 @@
+<!DOCTYPE html> <!-- HTML5 document declaration -->
+<html lang="en"> <!-- Page ki language English hai -->
+<head>
+  <meta charset="UTF-8"> <!-- Characters encoding UTF-8 hai -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile responsive banata hai -->
+  <title>Task-16</title> <!-- Page ka title -->
+
+  <!-- Yahan se internal CSS start hoti hai -->
+  <style>
+    /* Body ka styling - center aligned aur background gradient */
+    body {
+      font-family: Arial, sans-serif; /* Font style set kiya hai */
+      background: linear-gradient(to right, #e0e7ff, #f3e8ff, #fce7f3); /* Gradient background */
+      margin: 0;
+      padding: 20px;
+      display: flex; /* Center alignment ke liye flex use kiya */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Full screen height tak center rahega */
+    }
+
+    /* Form box ki styling */
+    .form-container {
+      background-color: white; /* White background */
+      padding: 30px; /* Andar ka spacing */
+      border-radius: 15px; /* Curve corners */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Shadow for depth */
+      max-width: 500px; /* Max width set */
+      width: 90%; /* Responsive width */
+      margin-bottom: 20px;
+    }
+
+    /* Apply the same hover effect to all containers */
+    .form-container:hover,
+    .result-container:hover,
+    .image-container:hover,
+    .font-size-container:hover,
+    .datetime-container:hover {
+      box-shadow: 0 15px 30px rgba(16, 39, 211, 0.807); /* Shadow aur gehra hota hai */
+      transform: scale(1.0); /* Slightly bada hota hai */
+      transition: all 0.3s ease; /* Smooth transition effect */
+    }
+
+    /* Heading (Form title) styling */
+    h2 {
+      text-align: center; /* Center align */
+      color: #4f46e5; /* Indigo color */
+      margin-bottom: 20px; /* Niche gap */
+    }
+
+    /* Label ka style - bold text aur spacing */
+    label {
+      font-weight: bold; /* Bold text */
+      display: block; /* Har label alag line par */
+      margin-bottom: 5px; /* Niche thoda gap */
+      color: #333;
+    }
+
+    /* Input fields aur select box ka styling */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      width: 100%; /* Full width input box */
+      padding: 10px; /* Padding andar ka */
+      margin-bottom: 15px; /* Niche gap */
+      border: 1px solid #ccc; /* Light border */
+      border-radius: 8px; /* Thoda round shape */
+      box-sizing: border-box; /* Width + padding mein adjust hota hai */
+    }
+
+    /* Radio button aur checkbox group styling */
+    .radio-group,
+    .checkbox-group {
+      display: flex; /* Side by side dikhane ke liye */
+      flex-wrap: wrap; /* Small screen par wrap ho jaye */
+      gap: 10px; /* Buttons ke beech gap */
+      margin-bottom: 15px;
+    }
+
+    /* Radio aur checkbox ke andar ke label ka styling */
+    .radio-group label,
+    .checkbox-group label {
+      font-weight: normal; /* Bold na ho */
+    }
+
+    /* Dono button ke common style */
+    button {
+      padding: 10px 20px; /* Button ke andar ka spacing */
+      border: none; /* Border hata diya */
+      border-radius: 8px; /* Rounded shape */
+      cursor: pointer; /* Mouse pointer ban jata hai */
+      font-weight: bold;
+    }
+
+    /* Submit button ka alag color aur hover effect */
+    .submit-btn {
+      background-color: #4f46e5; /* Indigo */
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background-color: #4338ca; /* Hover pe thoda dark */
+    }
+
+    /* Reset button ka color */
+    .reset-btn {
+      background-color: #ccc;
+      color: black;
+    }
+
+    .reset-btn:hover {
+      background-color: #aaa;
+    }
+
+    /* Button group ko flex se space-between kiya hai */
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    /* Form submission result styling */
+    .result-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      margin-top: 20px;
+      display: none; /* Initially hidden */
+    }
+
+    .result-container h3 {
+      color: #4f46e5;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .result-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .result-label {
+      font-weight: bold;
+      color: #4f46e5;
+    }
+
+    /* Image changer container */
+    .image-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    /* Font size changer container */
+    .font-size-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .font-size-container p {
+      margin: 20px 0;
+      transition: font-size 0.3s ease;
+    }
+
+    .font-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Date time container */
+    .datetime-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .datetime-display {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4f46e5;
+      margin: 10px 0;
+    }
+
+    /* Mobile responsive ke liye media query */
+    @media (max-width: 500px) {
+      .button-group {
+        flex-direction: column; /* Button ek ke neeche aayenge */
+        gap: 10px;
+      }
+
+      button {
+        width: 100%; /* Button full width ho jaye */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Form ka outer box -->
+  <div class="form-container">
+    <h2>Basic Information Form</h2> <!-- Form ka heading -->
+
+    <!-- Yahan se form start hoti hai -->
+    <form id="infoForm">
+      <!-- Name input field -->
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <!-- Mobile number input field -->
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="e.g. 9876543210" required>
+
+      <!-- Email input field -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <!-- Gender radio buttons -->
+      <label>Gender</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+
+      <!-- Education checkboxes -->
+      <label>Education Done</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="education" value="High School"> High School</label>
+        <label><input type="checkbox" name="education" value="Diploma"> Diploma</label>
+        <label><input type="checkbox" name="education" value="Graduation"> Graduation</label>
+        <label><input type="checkbox" name="education" value="Post Graduation"> Post Graduation</label>
+      </div>
+
+      <!-- Tea pasand hai ya nahi -->
+      <label for="tea">Do you like tea?</label>
+      <select id="tea" name="tea" required>
+        <option value="" disabled selected>Select an option</option> <!-- Placeholder -->
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Sometimes">Sometimes</option>
+      </select>
+
+      <!-- Buttons for submit and reset -->
+      <div class="button-group">
+        <button type="submit" class="submit-btn">Submit</button>
+        <button type="reset" class="reset-btn">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 1. Form submission result display container -->
+  <div id="resultContainer" class="result-container">
+    <h3>Form Submission Result</h3>
+    <div id="formResult"></div>
+  </div>
+
+  <!-- 2. Image changer container -->
+  <div class="image-container">
+    <h3>Image Changer</h3>
+    <img id="changeableImage" src="images/av3.jpg" alt="Changeable image">
+    <button id="changeImageBtn" class="submit-btn">Change Image</button>
+  </div>
+
+  <!-- 3. Font size changer container -->
+  <div class="font-size-container">
+    <h3>Font Size Changer</h3>
+    <p id="resizableText">This is a sample text. We can increase or decrease its font size using the below buttons.</p>
+    <div class="font-buttons">
+      <button id="decreaseFontBtn" class="reset-btn">Decrease Font</button>
+      <button id="increaseFontBtn" class="submit-btn">Increase Font</button>
+    </div>
+  </div>
+
+  <!-- 4. Date and time display container -->
+  <div class="datetime-container">
+    <h3>Current Date & Time</h3>
+    <div id="datetimeDisplay" class="datetime-display"></div>
+  </div>
+
+  <!-- JavaScript Code -->
+  <script>
+    // 1. Form submission handling
+    document.getElementById('infoForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Form submission ko rokna
+      
+      // Form values collect karna
+      const name = document.getElementById('name').value;
+      const mobile = document.getElementById('mobile').value;
+      const email = document.getElementById('email').value;
+      
+      // Gender ka selected value find karna
+      let gender = '';
+      const genderOptions = document.getElementsByName('gender');
+      for (let i = 0; i < genderOptions.length; i++) {
+        if (genderOptions[i].checked) {
+          gender = genderOptions[i].value;
+          break;
+        }
+      }
+      
+      // Education ke selected checkboxes find karna
+      const educationCheckboxes = document.getElementsByName('education');
+      const selectedEducation = [];
+      for (let i = 0; i < educationCheckboxes.length; i++) {
+        if (educationCheckboxes[i].checked) {
+          selectedEducation.push(educationCheckboxes[i].value);
+        }
+      }
+      const education = selectedEducation.length > 0 ? selectedEducation.join(', ') : 'None selected';
+      
+      // Tea preference
+      const tea = document.getElementById('tea').value;
+      
+      // Result HTML create karna
+      let resultHTML = '';
+      resultHTML += createResultItem('Name', name);
+      resultHTML += createResultItem('Mobile', mobile);
+      resultHTML += createResultItem('Email', email);
+      resultHTML += createResultItem('Gender', gender);
+      resultHTML += createResultItem('Education', education);
+      resultHTML += createResultItem('Tea Preference', tea);
+      
+      // Result container mein HTML set karna aur show karna
+      document.getElementById('formResult').innerHTML = resultHTML;
+      document.getElementById('resultContainer').style.display = 'block';
+      
+      // Scroll to results
+      document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // Helper function for creating result items
+    function createResultItem(label, value) {
+      return `<div class="result-item">
+                <span class="result-label">${label}:</span> ${value}
+              </div>`;
+    }
+    
+    // 2. Image changer functionality
+    const images = [
+      'images/av3.jpg',
+      'images/ai.jpg?text=Image+2',
+      'images/task3.png.jpg?text=Image+3'
+    ];
+    let currentImageIndex = 0;
+    
+    document.getElementById('changeImageBtn').addEventListener('click', function() {
+      // Next image index calculate karna
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      
+      // Image source update karna
+      document.getElementById('changeableImage').src = images[currentImageIndex];
+    });
+    
+    // 3. Font size changer functionality
+    const resizableText = document.getElementById('resizableText');
+    let fontSize = 16; // Default font size (px)
+    
+    document.getElementById('increaseFontBtn').addEventListener('click', function() {
+      if (fontSize < 36) { // Maximum font size
+        fontSize += 2;
+        resizableText.style.fontSize = fontSize + 'px';
+      }
+    });
+    
+    document.getElementById('decreaseFontBtn').addEventListener('click', function() {
+      if (fontSize > 10) { // Minimum font size
+        fontSize -= 2;
+        resizableText.style.fontSize = fontSize + 'px';
+      }
+    });
+    
+    // 4. Date and time display functionality
+    function updateDateTime() {
+      const now = new Date();
+      
+      // Date and time format options
+      const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      
+      // Format date and time with options
+      const formattedDateTime = now.toLocaleDateString('en-US', options);
+      
+      // Update display
+      document.getElementById('datetimeDisplay').textContent = formattedDateTime;
+    }
+    
+    // Initial date time update
+    updateDateTime();
+    
+    // Update date time every second
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>

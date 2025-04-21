@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task-7</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f6f9;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #696511;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .table-container:hover {
+      box-shadow: 0 15px 35px rgba(226, 255, 6, 0.56);
+      transition: box-shadow 0.3s ease;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #afa54c;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+      background-color: #b8b8b467;
+    }
+
+
+    @media screen and (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+      }
+
+      td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+        color: #555;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Record Table</h1>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Student Info</th>
+          <th rowspan="2">CGPA Till Last Semester</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Registration No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Name">Animesh </td>
+          <td data-label="Registration No">2315513501</td>
+          <td data-label="CGPA">9.5</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Ritik </td>
+          <td data-label="Registration No">2315513502</td>
+          <td data-label="CGPA">9.0</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Raushan </td>
+          <td data-label="Registration No">2315513503</td>
+          <td data-label="CGPA">9.1</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Anya</td>
+          <td data-label="Registration No">2315513504</td>
+          <td data-label="CGPA">7.8</td>
+        </tr>
+        <tr>
+          <td  data-label="Name">Aman</td>
+          <td data-label="Registration No">2315513505</td>
+          <td data-label="CGPA">8.9</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Anshu</td>
+          <td data-label="Registration No">2315513506</td>
+          <td data-label="CGPA">9.0</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Avni</td>
+          <td data-label="Registration No">2315513507</td>
+          <td data-label="CGPA">7.5</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Rohan</td>
+          <td data-label="Registration No">2315513508</td>
+          <td data-label="CGPA">8.2</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Siya</td>
+          <td data-label="Registration No">2315513509</td>
+          <td data-label="CGPA">7.9</td>
+        </tr>
+        <tr>
+          <td data-label="Name">Arohi</td>
+          <td data-label="Registration No">2315513510</td>
+          <td data-label="CGPA">8.7</td>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-15</title>
+    <style>
+        /* Modern color scheme and styling */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --background-color: #f8f9fa;
+            --card-bg-color: #ffffff;
+            --code-bg-color: #1d1e22;
+            --code-color: #f8f8f2;
+            --text-color: #333333;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic styling with smooth transitions */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Container with better spacing and layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Program cards with hover effects */
+        .program-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 .program-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced code box with syntax highlighting colors */
+        .code-box {
+            background-color: var(--code-bg-color);
+            color: var(--code-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .code-box .keyword {
+            color: #ff79c6;
+        }
+
+        .code-box .string {
+            color: #f1fa8c;
+        }
+
+        .code-box .number {
+            color: #bd93f9;
+        }
+
+        .code-box .function {
+            color: #50fa7b;
+        }
+
+        .code-box .comment {
+            color: #6272a4;
+        }
+
+        /* Improved button styling with animation */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Button icons */
+        .button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Improved output section styling */
+        .output {
+            background-color: #f3f4f6;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .output.has-output {
+            background-color: #e8f5e9;
+        }
+
+        .output-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Input styling for interactive examples */
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .program-card {
+                padding: 15px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JavaScript Programs</h1>
+        <div class="subtitle">Interactive code examples with real-time outputs</div>
+    </header>
+
+    <div class="container">
+        <!-- Program 1 -->
+        <div class="program-card">
+            <h2><span class="program-number">1</span> Sort a JavaScript Array</h2>
+            <div class="code-box">
+<span class="function">function</span> sortArray(array) {
+  // Creating a copy to avoid modifying the original array
+  <span class="keyword">const</span> sortedArray = [...array];
+  
+  // Sort the array (default is ascending order)
+  sortedArray.sort(<span class="function">(a, b)</span> => a - b);
+  
+  <span class="keyword">return</span> sortedArray;
+}
+
+<span class="keyword">const</span> numbers = [34, 7, 23, 32, 5, 62];
+<span class="keyword">const</span> sortedNumbers = sortArray(numbers);
+
+console.log(<span class="string">"Original array:"</span>, numbers);
+console.log(<span class="string">"Sorted array:"</span>, sortedNumbers);</div>
+            <div class="input-group">
+                <div>
+                    <label for="array-input">Enter numbers (comma-separated):</label>
+                    <input type="text" id="array-input" placeholder="34, 7, 23, 32, 5, 62">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runSortArray()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output1')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output1" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output1-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card">
+            <h2><span class="program-number">2</span> Concatenate Two Arrays</h2>
+            <div class="code-box">
+<span class="function">function</span> concatenateArrays(array1, array2) {
+  // Create a new array by concatenating both arrays
+  <span class="keyword">const</span> newArray = [...array1, ...array2];
+  
+  <span class="keyword">return</span> newArray;
+}
+
+<span class="keyword">const</span> firstArray = [1, 2, 3];
+<span class="keyword">const</span> secondArray = [4, 5, 6];
+<span class="keyword">const</span> concatenatedArray = concatenateArrays(firstArray, secondArray);
+
+console.log(<span class="string">"First array:"</span>, firstArray);
+console.log(<span class="string">"Second array:"</span>, secondArray);
+console.log(<span class="string">"Concatenated array:"</span>, concatenatedArray);</div>
+            <div class="input-group">
+                <div>
+                    <label for="array1-input">Enter first array (comma-separated):</label>
+                    <input type="text" id="array1-input" placeholder="1, 2, 3">
+                </div>
+            </div>
+            <div class="input-group">
+                <div>
+                    <label for="array2-input">Enter second array (comma-separated):</label>
+                    <input type="text" id="array2-input" placeholder="4, 5, 6">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runConcatenateArrays()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output2')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output2" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output2-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card">
+            <h2><span class="program-number">3</span> Remove First Element from Array</h2>
+            <div class="code-box">
+<span class="function">function</span> removeFirstElement(array) {
+  // Create a copy to avoid modifying the original array
+  <span class="keyword">const</span> newArray = [...array];
+  
+  // Remove the first element
+  newArray.shift();
+  
+  <span class="keyword">return</span> newArray;
+}
+
+<span class="keyword">const</span> originalArray = ["apple", "banana", "cherry", "date", "elderberry"];
+<span class="keyword">const</span> modifiedArray = removeFirstElement(originalArray);
+
+console.log(<span class="string">"Original array:"</span>, originalArray);
+console.log(<span class="string">"Array after removing first element:"</span>, modifiedArray);</div>
+            <div class="input-group">
+                <div>
+                    <label for="remove-input">Enter array elements (comma-separated):</label>
+                    <input type="text" id="remove-input" placeholder="apple, banana, cherry, date, elderberry">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runRemoveFirstElement()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output3')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output3" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output3-content">Run the program to see the output</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 JavaScript Programs - Interactive code examples</p>
+    </footer>
+    <script>
+    /* Output clear karne wali function */
+    function clearOutput(outputId) {
+        // Output element ke andar content ko default message se replace karo
+        document.getElementById(outputId + '-content').innerText = 'Run the program to see the output';
+    
+        // Agar output element mein animation ya styling lagi ho, toh usko hata do
+        document.getElementById(outputId).classList.remove('has-output');
+    }
+    
+    /* Output ko update karne wali function (animation ke saath) */
+    function updateOutput(outputId, text) {
+        // Output element ko get karo jisme result show hoga
+        const outputElement = document.getElementById(outputId);
+    
+        // Uske andar ke content element ko get karo
+        const contentElement = document.getElementById(outputId + '-content');
+        
+        // "\n" ko <br> se replace karo taaki HTML mein new line aaye
+        const formattedText = text.replace(/\n/g, '<br>');
+        
+        // Output element mein animation ya style apply karo
+        outputElement.classList.add('has-output');
+        
+        // Formatted text ko output element mein dikhayein
+        contentElement.innerHTML = formattedText;
+    }
+    
+    /* Program 1: Sort an array */
+    function runSortArray() {
+        function sortArray(array) {
+            // Creating a copy to avoid modifying the original array
+            const sortedArray = [...array];
+            
+            // Sort the array (default is ascending order)
+            sortedArray.sort((a, b) => a - b);
+            
+            return sortedArray;
+        }
+    
+        // Input field se values lo
+        let arrayInput = document.getElementById('array-input').value;
+        let numbers;
+    
+        try {
+            // Agar input empty hai toh default array use karo
+            if (arrayInput.trim() === '') {
+                numbers = [34, 7, 23, 32, 5, 62];
+            } else {
+                // User input ko array mein convert karo
+                numbers = arrayInput.split(',').map(num => parseFloat(num.trim()));
+                
+                // Check karo ki saari values valid numbers hain ya nahi
+                if (numbers.some(isNaN)) {
+                    throw new Error("Invalid input. Please enter numbers separated by commas.");
+                }
+            }
+    
+            // Array ko sort karo
+            const sortedNumbers = sortArray(numbers);
+    
+            // Output dikhayein
+            updateOutput('output1', 
+                `Original array: [${numbers.join(', ')}]\n` +
+                `Sorted array (ascending): [${sortedNumbers.join(', ')}]`
+            );
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output1', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 2: Concatenate two arrays */
+    function runConcatenateArrays() {
+        function concatenateArrays(array1, array2) {
+            // Create a new array by concatenating both arrays
+            const newArray = [...array1, ...array2];
+            
+            return newArray;
+        }
+    
+        // Input fields se values lo
+        let array1Input = document.getElementById('array1-input').value;
+        let array2Input = document.getElementById('array2-input').value;
+        let array1, array2;
+    
+        try {
+            // Agar input empty hai toh default arrays use karo
+            if (array1Input.trim() === '') {
+                array1 = [1, 2, 3];
+            } else {
+                // User input ko array mein convert karo
+                array1 = array1Input.split(',').map(item => item.trim());
+                
+                // Try to convert to numbers if possible
+                const allNumbers = array1.every(item => !isNaN(parseFloat(item)));
+                if (allNumbers) {
+                    array1 = array1.map(item => parseFloat(item));
+                }
+            }
+            
+            if (array2Input.trim() === '') {
+                array2 = [4, 5, 6];
+            } else {
+                // User input ko array mein convert karo
+                array2 = array2Input.split(',').map(item => item.trim());
+                
+                // Try to convert to numbers if possible
+                const allNumbers = array2.every(item => !isNaN(parseFloat(item)));
+                if (allNumbers) {
+                    array2 = array2.map(item => parseFloat(item));
+                }
+            }
+    
+            // Arrays ko concatenate karo
+            const concatenatedArray = concatenateArrays(array1, array2);
+    
+            // Output dikhayein
+            updateOutput('output2', 
+                `First array: [${array1.join(', ')}]\n` +
+                `Second array: [${array2.join(', ')}]\n` +
+                `Concatenated array: [${concatenatedArray.join(', ')}]`
+            );
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output2', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 3: Remove first element from array */
+    function runRemoveFirstElement() {
+        function removeFirstElement(array) {
+            // Create a copy to avoid modifying the original array
+            const newArray = [...array];
+            
+            // Remove the first element
+            newArray.shift();
+            
+            return newArray;
+        }
+    
+        // Input field se values lo
+        let arrayInput = document.getElementById('remove-input').value;
+        let originalArray;
+    
+        try {
+            // Agar input empty hai toh default array use karo
+            if (arrayInput.trim() === '') {
+                originalArray = ["apple", "banana", "cherry", "date", "elderberry"];
+            } else {
+                // User input ko array mein convert karo
+                originalArray = arrayInput.split(',').map(item => item.trim());
+            }
+            
+            // Check for empty array
+            if (originalArray.length === 0) {
+                throw new Error("Please enter at least one array element.");
+            }
+    
+            // First element ko remove karo
+            const modifiedArray = removeFirstElement(originalArray);
+    
+            // Output dikhayein
+            updateOutput('output3', 
+                `Original array: [${originalArray.join(', ')}]\n` +
+                `Removed element: "${originalArray[0]}"\n` +
+                `Array after removing first element: [${modifiedArray.join(', ')}]`
+            );
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output3', `Error: ${error.message}`);
+        }
+    }
+    </script>    
+</body>
+</html>

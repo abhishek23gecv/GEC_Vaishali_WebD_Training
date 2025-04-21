@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-11</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: #d9534f;
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .logo span {
+            color: #5bc0de;
+            font-size: 18px;
+        }
+
+        .search-bar {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            background-color: #d9534f;
+            border-radius: 4px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #c9302c;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #d9534f;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .sidebar {
+            width: 25%;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .sidebar h3 {
+            color: #d9534f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d9534f;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #d9534f;
+        }
+
+        .content {
+            width: 75%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner {
+            width: 100%;
+            height: 150px;
+            background-color: #5bc0de;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            border-radius: 4px;
+        }
+
+        .grid-posts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .post {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #d9534f;
+        }
+
+        .post h3 {
+            color: #d9534f;
+            margin-bottom: 10px;
+        }
+
+        .post p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .post a {
+            display: inline-block;
+            background-color: #d9534f;
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .post a:hover {
+            background-color: #c9302c;
+        }
+
+        /* Featured Section */
+        .featured {
+            margin: 20px 0;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured h2 {
+            color: #d9534f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d9534f;
+            padding-bottom: 10px;
+        }
+
+        .featured ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            list-style: none;
+        }
+
+        .featured ul li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #5bc0de;
+        }
+
+        .featured ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .featured ul li a:hover {
+            color: #d9534f;
+        }
+
+        /* Latest Updates Ticker */
+        .ticker {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-label {
+            background-color: #333;
+            padding: 5px 10px;
+            margin-right: 15px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .ticker-items {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: ticker 20s linear infinite;
+        }
+
+        .ticker-items span {
+            margin-right: 50px;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            width: 30%;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            border-bottom: 2px solid #d9534f;
+            padding-bottom: 10px;
+            color: #d9534f;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #d9534f;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar, .content {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .featured ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .search-bar {
+                max-width: 100%;
+                margin-bottom: 15px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 15px;
+            }
+
+            .grid-posts {
+                grid-template-columns: 1fr;
+            }
+
+            .featured ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .ticker-label {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>Sarkari Result</h1>
+                    <span>सरकारी रिजल्ट</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">LATEST JOBS</a></li>
+                    <li><a href="#">RESULTS</a></li>
+                    <li><a href="#">ADMIT CARD</a></li>
+                    <li><a href="#">ANSWER KEY</a></li>
+                    <li><a href="#">SYLLABUS</a></li>
+                    <li><a href="#">ADMISSION</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker">
+        <div class="container">
+            <div class="ticker-content">
+                <div class="ticker-label">LATEST</div>
+                <div class="ticker-items">
+                    <span>UPSC Recruitment 2025 - Apply Online</span>
+                    <span>SSC CGL Result 2025 Released</span>
+                    <span>Railway Group D Result 2025</span>
+                    <span>IBPS PO Admit Card Available Now</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Government Jobs</a></li>
+                    <li><a href="#">Bank Jobs</a></li>
+                    <li><a href="#">Teaching Jobs</a></li>
+                    <li><a href="#">Railway Jobs</a></li>
+                    <li><a href="#">Police Jobs</a></li>
+                    <li><a href="#">UPSC</a></li>
+                    <li><a href="#">SSC</a></li>
+                    <li><a href="#">Engineering Jobs</a></li>
+                    <li><a href="#">Defence Jobs</a></li>
+                    <li><a href="#">Medical Jobs</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="banner">Latest Sarkari Result Updates</div>
+                <div class="grid-posts">
+                    <div class="post">
+                        <h3>UPSC IAS 2025 Notification</h3>
+                        <p>Union Public Service Commission has released notification for Civil Services Examination 2025.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                    <div class="post">
+                        <h3>SSC CGL Tier I Result 2025</h3>
+                        <p>Staff Selection Commission has declared the result for Combined Graduate Level Examination Tier I.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                    <div class="post">
+                        <h3>IBPS Clerk Admit Card 2025</h3>
+                        <p>Institute of Banking Personnel Selection has released admit card for Clerk Preliminary Examination.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                    <div class="post">
+                        <h3>Railway RRB NTPC Recruitment 2025</h3>
+                        <p>Railway Recruitment Board has announced the recruitment for Non-Technical Popular Categories.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured">
+            <h2>Important Updates</h2>
+            <ul>
+                <li><a href="#">UPSC IAS Result 2025</a></li>
+                <li><a href="#">SSC CGL Application Form 2025</a></li>
+                <li><a href="#">Bank PO Notification 2025</a></li>
+                <li><a href="#">Railway Group D Admit Card</a></li>
+                <li><a href="#">IBPS Clerk Cut-off Marks</a></li>
+                <li><a href="#">UPSC CAPF Exam Date 2025</a></li>
+                <li><a href="#">SSC CHSL Notification 2025</a></li>
+                <li><a href="#">RRB JE Result 2025</a></li>
+                <li><a href="#">NRA CET Registration 2025</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Sarkari Result is India's leading platform for government job notifications, results, admit cards, and more. We provide accurate and timely information.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Latest Jobs</a></li>
+                        <li><a href="#">Results</a></li>
+                        <li><a href="#">Admit Cards</a></li>
+                        <li><a href="#">Answer Keys</a></li>
+                        <li><a href="#">Syllabus</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: info@sarkariresult.com</li>
+                        <li>Phone: +91-1234567890</li>
+                        <li>Address: New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sarkari Result. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

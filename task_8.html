@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task-8</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-image: url("images/bg2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        background-attachment: fixed;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+        color: rgb(0, 221, 255);
+      }
+
+      .container {
+        max-width: 900px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    
+
+h1 {
+  text-decoration: none;
+  /* Heading mein koi decoration nahi hai */
+  margin-bottom: 20px;
+  /* Heading ke neeche margin badha di hai */
+  background: rgba(0, 0, 0, 0.5);
+  /* Heading ka background semi-transparent black hai */
+  border-radius: 10px;
+  /* Heading ke corners round kiye hain */
+  color: aqua;
+  /* Heading ka color aqua hai */
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* Smooth transition effect add kiya hai */
+  padding: 12px;
+  /* Heading ke andar padding add ki hai */
+  font-size: 2.2rem;
+  /* Font size thoda bada kiya hai */
+  letter-spacing: 2px;
+  /* Letters ke beech space badha diya hai */
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  /* Text shadow add kiya hai glow effect ke liye */
+}
+
+      h1:hover {
+        color: rgb(255, 0, 115);
+        /* Hover par heading ka color pink ho jata hai */
+        transform: scale(1.03);
+        /* Hover par heading thoda bada ho jata hai */
+      }
+
+      .profile-img {
+        border-radius: 50%;
+        /* Profile image ko round/circle banaya hai */
+        height: 180px;
+        /* Image height badha di hai */
+        width: 180px;
+        /* Image width badha di hai */
+        margin-top: 10px;
+        /* Image ke upar margin rakha hai */
+        transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+        /* Multiple properties ke liye smooth transition */
+        border: 4px solid rgb(0, 221, 255);
+        /* Border ki thickness badha di hai */
+        object-fit: cover;
+        /* Image ko properly crop/fit kiya hai */
+        box-shadow: 0 0 15px rgba(0, 221, 255, 0.5);
+        /* Image ke liye glow effect add kiya hai */
+      }
+      .profile-img:hover {
+        transform: scale(1.1) rotate(5deg);
+        /* Hover par image badi hoti hai aur thodi rotate hoti hai */
+        border: 4px solid rgb(255, 0, 115);
+        /* Hover par border color change hota hai */
+        box-shadow: 0 0 20px rgba(255, 0, 115, 0.7);
+        /* Hover par glow effect pink ho jata hai */
+      }
+
+      h2 {
+        padding: 10px;
+        text-decoration: none;
+        text-align: left;
+        margin: 10px;
+        color: aqua;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      h2:hover {
+        color: rgb(255, 0, 115);
+        /* transform: scale(1.0); */
+      }
+
+      .links a {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .links a:hover {
+        color: rgb(255, 0, 115);
+        
+      }
+
+      /* Updated Paragraph Styling */
+      p {
+        text-align: justify;
+        line-height: 1.8;
+        margin: 15px 0;
+        color: white;
+        font-size: 16px;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      p:hover {
+        color: rgb(255, 0, 115);
+      }
+
+      hr {
+        margin: 20px 0;
+        border: 1px solid #ddd;
+      }
+
+      ul {
+        list-style: disc;
+        text-align: left;
+        margin-left: 20px;
+        color: white;
+
+      }
+
+      ul li {
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+
+      ul li:hover {
+        color: rgb(255, 0, 115);
+      }
+      #goal {
+        color: white;
+        font-size: 16px;
+        margin: 10px 0;
+        transition: color 0.3s ease;
+      }
+      #goal:hover {
+        color: rgb(255, 0, 115);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+
+      th,
+      td {
+        border: 1px solid aqua;
+        padding: 10px;
+        text-align: center;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      th {
+        background: rgb(25, 181, 205);
+        color: black;
+      }
+
+      td:hover,
+      th:hover {
+        background: rgb(255, 0, 115);
+        color: white;
+      }
+#bold:hover{
+        color: gold;
+        text-shadow: 0 0 8px rgba(255,215,0,0.7);
+}
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        .profile-img {
+          height: 120px;
+          width: 120px;
+        }
+
+        .links a {
+          padding: 8px 12px;
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        table {
+          font-size: 14px;
+        }
+
+        th,
+        td {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Abhishek Kumar</h1>
+      <img
+        class="profile-img"
+        src="images/av3.jpg"
+        alt="Abhishek Kumar"
+      />
+
+      <div class="links">
+        <a
+          href="https://www.linkedin.com/in/abhishek-kumar-050577268"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/abhishek23gecv" target="_blank">GitHub</a>
+      </div>
+
+      <p>
+        Hello! I'm <b id="bold">Abhishek Kumar</b>, currently a 2nd-year student pursuing
+        a <b id="bold">Bachelor of Technology</b> degree in
+        <b id="bold">Computer Science & Engineering</b> with a specialization in
+        <b id="bold">Internet of Things</b> at <b id="bold">Bihar Engineering University, Patna</b>,
+        and a <b id="bold">Bachelor of Science</b> in <b id="bold">Data Analytics</b> from
+        <b id="bold">Indian Institute of Technology Patna</b>. I have a deep passion for
+        exploring and learning new things. My interests revolve around
+        cutting-edge technologies like
+        <b
+          >Artificial Intelligence (AI), Machine Learning (ML), Data Science
+          (DS), and Internet of Things (IoT)</b
+        >.
+      </p>
+
+      <h2>Skills:</h2>
+      <ul>
+        <li><b>Programming Languages:</b> C, C++, Python, HTML, CSS</li>
+        <li>
+          <b>Technologies:</b> Web Development, Data Analytics, Prompt
+          Engineering, IoT
+        </li>
+        <li><b>Operating Systems:</b> Windows, Linux</li>
+        <li><b>Tools:</b> MATLAB, Git & GitHub, Node-Red, ROS-2</li>
+      </ul>
+
+      <h2>Education:</h2>
+      <table>
+        <tr>
+          <th>Level of Education</th>
+          <th>School/College Name</th>
+          <th>Board/University</th>
+          <th>Year of Passing</th>
+          <th>Percentage/CGPA</th>
+        </tr>
+        <tr>
+          <td>BS-CSDA</td>
+          <td>Indian Institute of Technology Patna</td>
+          <td>Indian Institute of Technology Patna</td>
+          <td>2027</td>
+          <td>8.56</td>
+        </tr>
+        <tr>
+          <td>B.Tech</td>
+          <td>Government Engineering College Vaishali</td>
+          <td>Bihar Engineering University, Patna</td>
+          <td>2027</td>
+          <td>7.24</td>
+        </tr>
+        <tr>
+          <td>Intermidiate</td>
+          <td>Islamia High School cum Inter College Olhanpur, Saran</td>
+          <td>BSEB, Patna</td>
+          <td>2021</td>
+          <td>84.2%</td>
+        </tr>
+        <tr>
+          <td>Matric</td>
+          <td>Islamia High School cum Inter College Olhanpur, Saran</td>
+          <td>BSEB, Patna</td>
+          <td>2019</td>
+          <td>83.8%</td>
+        </tr>
+      </table>
+      <h2>Hobbies:</h2>
+      <ul>
+        <li>Exploring and learning new things.</li>
+        <li>Reading books as for Historical, Novels, Socials.</li>
+        <li>Listen and singing music.</li>
+        <li>Playing games like Table-Tennis, Vollyball, Badminton.</li>
+      </ul>
+      <h2>Goal:</h2>
+      <ul>
+      <span id="goal"> Currently my goal is to become a successful full-stack developer and
+        work on innovative </span> <br>
+        <span id="goal">projects that can make a difference in the world. For this I'm
+        doing my training at ATPLC.</span>
+      </ul>
+    </div>
+  </body>
+</html>

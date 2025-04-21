@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-14</title>
+    <style>
+        /* Modern color scheme and styling */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --background-color: #f8f9fa;
+            --card-bg-color: #ffffff;
+            --code-bg-color: #1d1e22;
+            --code-color: #f8f8f2;
+            --text-color: #333333;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic styling with smooth transitions */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Container with better spacing and layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Program cards with hover effects */
+        .program-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 .program-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced code box with syntax highlighting colors */
+        .code-box {
+            background-color: var(--code-bg-color);
+            color: var(--code-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .code-box .keyword {
+            color: #ff79c6;
+        }
+
+        .code-box .string {
+            color: #f1fa8c;
+        }
+
+        .code-box .number {
+            color: #bd93f9;
+        }
+
+        .code-box .function {
+            color: #50fa7b;
+        }
+
+        .code-box .comment {
+            color: #6272a4;
+        }
+
+        /* Improved button styling with animation */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Button icons */
+        .button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Improved output section styling */
+        .output {
+            background-color: #f3f4f6;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .output.has-output {
+            background-color: #e8f5e9;
+        }
+
+        .output-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Input styling for interactive examples */
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .program-card {
+                padding: 15px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JavaScript Programs</h1>
+        <div class="subtitle">Interactive code examples with real-time outputs</div>
+    </header>
+
+    <div class="container">
+        <!-- Program 1 -->
+        <div class="program-card">
+            <h2><span class="program-number">1</span> Filter Out Negative Numbers</h2>
+            <div class="code-box">
+<span class="function">function</span> filterNegativeNumbers(numbers) {
+  <span class="keyword">return</span> numbers.filter(<span class="function">number</span> => number >= 0);
+}
+
+<span class="keyword">const</span> numbers = [5, -1, 10, -7, 0, 42, -23, 15];
+<span class="keyword">const</span> positiveNumbers = filterNegativeNumbers(numbers);
+
+console.log(<span class="string">"Original array:"</span>, numbers);
+console.log(<span class="string">"Filtered array:"</span>, positiveNumbers);</div>
+            <div class="input-group">
+                <div>
+                    <label for="numbers-input">Enter numbers (comma-separated):</label>
+                    <input type="text" id="numbers-input" placeholder="5, -1, 10, -7, 0, 42, -23, 15">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runFilterNegativeNumbers()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output1')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output1" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output1-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card">
+            <h2><span class="program-number">2</span> Difference from 13</h2>
+            <div class="code-box">
+<span class="function">function</span> differenceFrom13(number) {
+  <span class="keyword">const</span> difference = number - 13;
+  
+  <span class="keyword">if</span> (difference > 0) {
+    <span class="keyword">return</span> 2 * Math.abs(difference);
+  } <span class="keyword">else</span> {
+    <span class="keyword">return</span> Math.abs(difference);
+  }
+}
+
+console.log(<span class="string">"Difference from 13 for 10:"</span>, differenceFrom13(10));
+console.log(<span class="string">"Difference from 13 for 20:"</span>, differenceFrom13(20));</div>
+            <div class="input-group">
+                <div>
+                    <label for="number-input">Enter a number:</label>
+                    <input type="number" id="number-input" placeholder="Enter any number">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runDifferenceFrom13()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output2')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output2" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output2-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card">
+            <h2><span class="program-number">3</span> Fibonacci Series</h2>
+            <div class="code-box">
+<span class="function">function</span> generateFibonacci(n) {
+  <span class="keyword">const</span> fibSeries = [];
+  
+  <span class="keyword">if</span> (n <= 0) <span class="keyword">return</span> fibSeries;
+  
+  fibSeries.push(0);
+  <span class="keyword">if</span> (n === 1) <span class="keyword">return</span> fibSeries;
+  
+  fibSeries.push(1);
+  
+  <span class="keyword">for</span> (<span class="keyword">let</span> i = 2; i < n; i++) {
+    fibSeries.push(fibSeries[i-1] + fibSeries[i-2]);
+  }
+  
+  <span class="keyword">return</span> fibSeries;
+}
+
+<span class="keyword">const</span> fibNumbers = generateFibonacci(10);
+console.log(<span class="string">"Fibonacci series (10 numbers):"</span>, fibNumbers);</div>
+            <div class="input-group">
+                <div>
+                    <label for="fib-input">Number of Fibonacci terms:</label>
+                    <input type="number" id="fib-input" min="1" max="100" value="10" placeholder="Enter a number">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runFibonacci()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output3')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output3" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output3-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 4 -->
+        <div class="program-card">
+            <h2><span class="program-number">4</span> Sum of Multiples of 3 and 5 Under 1000</h2>
+            <div class="code-box">
+<span class="function">function</span> sumMultiples3And5(limit) {
+  <span class="keyword">let</span> sum = 0;
+  
+  <span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < limit; i++) {
+    <span class="keyword">if</span> (i % 3 === 0 || i % 5 === 0) {
+      sum += i;
+    }
+  }
+  
+  <span class="keyword">return</span> sum;
+}
+
+<span class="keyword">const</span> sum = sumMultiples3And5(1000);
+console.log(<span class="string">"Sum of multiples of 3 and 5 under 1000:"</span>, sum);</div>
+            <div class="input-group">
+                <div>
+                    <label for="limit-input">Upper limit:</label>
+                    <input type="number" id="limit-input" min="1" value="1000" placeholder="Enter a number">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runSumMultiples()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output4')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output4" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output4-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 5 -->
+        <div class="program-card">
+            <h2><span class="program-number">5</span> Cube of a Number Using Function Object</h2>
+            <div class="code-box">
+<span class="keyword">const</span> MathFunctions = {
+  cube: <span class="function">function</span>(number) {
+    <span class="keyword">return</span> number * number * number;
+  }
+};
+
+<span class="keyword">const</span> num = 5;
+<span class="keyword">const</span> cubeResult = MathFunctions.cube(num);
+console.log(<span class="string">`The cube of ${num} is:`</span>, cubeResult);</div>
+            <div class="input-group">
+                <div>
+                    <label for="cube-input">Enter a number:</label>
+                    <input type="number" id="cube-input" value="5" placeholder="Enter a number">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runCubeNumber()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output5')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output5" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output5-content">Run the program to see the output</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 JavaScript Programs - Interactive code examples</p>
+    </footer>
+    <script>
+    /* Output clear karne wali function */
+    function clearOutput(outputId) {
+        // Output element ke andar content ko default message se replace karo
+        document.getElementById(outputId + '-content').innerText = 'Run the program to see the output';
+    
+        // Agar output element mein animation ya styling lagi ho, toh usko hata do
+        document.getElementById(outputId).classList.remove('has-output');
+    }
+    
+    /* Output ko update karne wali function (animation ke saath) */
+    function updateOutput(outputId, text) {
+        // Output element ko get karo jisme result show hoga
+        const outputElement = document.getElementById(outputId);
+    
+        // Uske andar ke content element ko get karo
+        const contentElement = document.getElementById(outputId + '-content');
+        
+        // "\n" ko <br> se replace karo taaki HTML mein new line aaye
+        const formattedText = text.replace(/\n/g, '<br>');
+        
+        // Output element mein animation ya style apply karo
+        outputElement.classList.add('has-output');
+        
+        // Formatted text ko output element mein dikhayein
+        contentElement.innerHTML = formattedText;
+    }
+    
+    /* Program 1: Negative numbers ko filter karne wali function */
+    function runFilterNegativeNumbers() {
+        // Sirf non-negative numbers ko return karegi
+        function filterNegativeNumbers(numbers) {
+            return numbers.filter(number => number >= 0); // Array mein se sirf wahi values return hongi jo 0 ya usse badi hain
+        }
+    
+        // Input field se values lo
+        let numbersInput = document.getElementById('numbers-input').value;
+        let numbers;
+    
+        try {
+            // Agar input empty hai toh default array use karo
+            if (numbersInput.trim() === '') {
+                numbers = [5, -1, 10, -7, 0, 42, -23, 15];
+            } else {
+                // User input ko array mein convert karo
+                numbers = numbersInput.split(',').map(num => parseFloat(num.trim()));
+                
+                // Check karo ki saari values valid numbers hain ya nahi
+                if (numbers.some(isNaN)) {
+                    throw new Error("Invalid input. Please enter numbers separated by commas.");
+                }
+            }
+    
+            // Negative values ko hata ke positive numbers ka array banao
+            const positiveNumbers = filterNegativeNumbers(numbers);
+    
+            // Output dikhayein
+            updateOutput('output1', 
+                `Original array: [${numbers.join(', ')}]\n` +
+                `Filtered array (positive numbers only): [${positiveNumbers.join(', ')}]`
+            );
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output1', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 2: 13 se difference nikalna */
+    function runDifferenceFrom13() {
+        // 13 se kitna difference hai wo calculate karta hai
+        function differenceFrom13(number) {
+            const difference = number - 13; // Number aur 13 ka difference nikalo
+            
+            // Agar difference positive hai toh uska double return karo
+            if (difference > 0) {
+                return 2 * Math.abs(difference);
+            } else {
+                // Nahi toh sirf absolute value return karo
+                return Math.abs(difference);
+            }
+        }
+    
+        // Input field se value lo
+        let numberInput = document.getElementById('number-input').value;
+        let number;
+    
+        try {
+            // Agar input khaali hai toh default examples use karo
+            if (numberInput.trim() === '') {
+                updateOutput('output2', 
+                    `Difference from 13 for 10: ${differenceFrom13(10)}\n` +
+                    `Difference from 13 for 20: ${differenceFrom13(20)}`
+                );
+                return;
+            }
+    
+            // User input ko number mein convert karo
+            number = parseFloat(numberInput);
+    
+            // Check karo ki valid number hai ya nahi
+            if (isNaN(number)) {
+                throw new Error("Please enter a valid number.");
+            }
+    
+            // Difference ka result nikalo
+            const result = differenceFrom13(number);
+    
+            // Output dikhayein with explanation
+            updateOutput('output2', 
+                `Number: ${number}\n` +
+                `Difference from 13: ${number - 13}\n` +
+                `Result: ${result}\n\n` +
+                `${number > 13 ? 'Since the number is greater than 13, the result is double the absolute difference.' : 'Since the number is less than or equal to 13, the result is the absolute difference.'}`
+            );
+        } catch (error) {
+            // Error show karo
+            updateOutput('output2', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 3: Fibonacci series generate karna */
+    function runFibonacci() {
+        function generateFibonacci(n) {
+            const fibSeries = []; // Empty array jisme series store hogi
+    
+            // Agar user ne 0 ya negative diya toh empty return karo
+            if (n <= 0) return fibSeries;
+    
+            // Series ka pehla element
+            fibSeries.push(0);
+    
+            // Agar sirf ek number chahiye toh wahi return karo
+            if (n === 1) return fibSeries;
+    
+            // Dusra element bhi daalo
+            fibSeries.push(1);
+    
+            // Loop se baaki elements generate karo
+            for (let i = 2; i < n; i++) {
+                fibSeries.push(fibSeries[i-1] + fibSeries[i-2]); // Previous 2 elements ka sum
+            }
+    
+            return fibSeries;
+        }
+    
+        // Input value lo
+        let fibInput = document.getElementById('fib-input').value;
+        let n;
+    
+        try {
+            if (fibInput.trim() === '') {
+                n = 10; // Default value agar input khaali ho
+            } else {
+                n = parseInt(fibInput);
+    
+                // Input check karo
+                if (isNaN(n) || n < 0) {
+                    throw new Error("Please enter a valid positive number.");
+                }
+    
+                // Limit lagao performance ke liye
+                if (n > 100) {
+                    throw new Error("For performance reasons, please enter a number less than or equal to 100.");
+                }
+            }
+    
+            // Series generate karo
+            const fibNumbers = generateFibonacci(n);
+    
+            // Output dikhayein
+            updateOutput('output3', 
+                `Fibonacci series (${n} numbers):\n` +
+                `[${fibNumbers.join(', ')}]`
+            );
+        } catch (error) {
+            updateOutput('output3', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 4: 3 aur 5 ke multiples ka sum */
+    function runSumMultiples() {
+        function sumMultiples3And5(limit) {
+            let sum = 0;
+    
+            // Loop se sum karo un numbers ka jo 3 ya 5 se divisible hain
+            for (let i = 0; i < limit; i++) {
+                if (i % 3 === 0 || i % 5 === 0) {
+                    sum += i;
+                }
+            }
+    
+            return sum;
+        }
+    
+        // Input value lo
+        let limitInput = document.getElementById('limit-input').value;
+        let limit;
+    
+        try {
+            // Agar input khaali ho toh default value lo
+            if (limitInput.trim() === '') {
+                limit = 1000;
+            } else {
+                limit = parseInt(limitInput);
+    
+                // Check karo input valid hai ya nahi
+                if (isNaN(limit) || limit <= 0) {
+                    throw new Error("Please enter a valid positive number.");
+                }
+    
+                // Limit lagao for performance
+                if (limit > 100000) {
+                    throw new Error("For performance reasons, please enter a number less than or equal to 100,000.");
+                }
+            }
+    
+            const sum = sumMultiples3And5(limit);
+    
+            // Output with explanation
+            updateOutput('output4', 
+                `Sum of multiples of 3 and 5 under ${limit}: ${sum}\n\n` +
+                `This is the sum of all numbers below ${limit} that are divisible by either 3 or 5.`
+            );
+        } catch (error) {
+            updateOutput('output4', `Error: ${error.message}`);
+        }
+    }
+    
+    /* Program 5: Number ka cube using object function */
+    function runCubeNumber() {
+        // Ek object bana rahe hain jisme cube function hai
+        const MathFunctions = {
+            cube: function(number) {
+                return number * number * number;
+            }
+        };
+    
+        // Input field se value lo
+        let cubeInput = document.getElementById('cube-input').value;
+        let number;
+    
+        try {
+            if (cubeInput.trim() === '') {
+                number = 5; // Default value
+            } else {
+                number = parseFloat(cubeInput);
+    
+                if (isNaN(number)) {
+                    throw new Error("Please enter a valid number.");
+                }
+            }
+    
+            // Cube calculate karo
+            const cubeResult = MathFunctions.cube(number);
+    
+            // Output with explanation
+            updateOutput('output5', 
+                `Number: ${number}\n` +
+                `Cube: ${number} × ${number} × ${number} = ${cubeResult}\n\n` +
+                `The cube function is implemented as a method of the MathFunctions object.`
+            );
+        } catch (error) {
+            updateOutput('output5', `Error: ${error.message}`);
+        }
+    }
+    </script>    
+</body>
+</html>

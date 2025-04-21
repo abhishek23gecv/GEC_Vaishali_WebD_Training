@@ -1,0 +1,185 @@
+<!DOCTYPE html> <!-- HTML5 document declaration -->
+<html lang="en"> <!-- Page ki language English hai -->
+<head>
+  <meta charset="UTF-8"> <!-- Characters encoding UTF-8 hai -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile responsive banata hai -->
+  <title>Task-10</title> <!-- Page ka title -->
+
+  <!-- Yahan se internal CSS start hoti hai -->
+  <style>
+    /* Body ka styling - center aligned aur background gradient */
+    body {
+      font-family: Arial, sans-serif; /* Font style set kiya hai */
+      background: linear-gradient(to right, #e0e7ff, #f3e8ff, #fce7f3); /* Gradient background */
+      margin: 0;
+      padding: 0;
+      display: flex; /* Center alignment ke liye flex use kiya */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Full screen height tak center rahega */
+    }
+
+    /* Form box ki styling */
+    .form-container {
+      background-color: white; /* White background */
+      padding: 30px; /* Andar ka spacing */
+      border-radius: 15px; /* Curve corners */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Shadow for depth */
+      max-width: 500px; /* Max width set */
+      width: 90%; /* Responsive width */
+    }
+
+    /* Jab user form par mouse le jaye toh hover effect */
+    .form-container:hover {
+        box-shadow: 0 15px 30px rgba(16, 39, 211, 0.807); /* Shadow aur gehra hota hai */
+        transform: scale(1.0); /* Slightly bada hota hai */
+        transition: all 0.3s ease; /* Smooth transition effect */
+    }
+
+    /* Heading (Form title) styling */
+    h2 {
+      text-align: center; /* Center align */
+      color: #4f46e5; /* Indigo color */
+      margin-bottom: 20px; /* Niche gap */
+    }
+
+    /* Label ka style - bold text aur spacing */
+    label {
+      font-weight: bold; /* Bold text */
+      display: block; /* Har label alag line par */
+      margin-bottom: 5px; /* Niche thoda gap */
+      color: #333;
+    }
+
+    /* Input fields aur select box ka styling */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      width: 100%; /* Full width input box */
+      padding: 10px; /* Padding andar ka */
+      margin-bottom: 15px; /* Niche gap */
+      border: 1px solid #ccc; /* Light border */
+      border-radius: 8px; /* Thoda round shape */
+      box-sizing: border-box; /* Width + padding mein adjust hota hai */
+    }
+
+    /* Radio button aur checkbox group styling */
+    .radio-group,
+    .checkbox-group {
+      display: flex; /* Side by side dikhane ke liye */
+      flex-wrap: wrap; /* Small screen par wrap ho jaye */
+      gap: 10px; /* Buttons ke beech gap */
+      margin-bottom: 15px;
+    }
+
+    /* Radio aur checkbox ke andar ke label ka styling */
+    .radio-group label,
+    .checkbox-group label {
+      font-weight: normal; /* Bold na ho */
+    }
+
+    /* Dono button ke common style */
+    button {
+      padding: 10px 20px; /* Button ke andar ka spacing */
+      border: none; /* Border hata diya */
+      border-radius: 8px; /* Rounded shape */
+      cursor: pointer; /* Mouse pointer ban jata hai */
+      font-weight: bold;
+    }
+
+    /* Submit button ka alag color aur hover effect */
+    .submit-btn {
+      background-color: #4f46e5; /* Indigo */
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background-color: #4338ca; /* Hover pe thoda dark */
+    }
+
+    /* Reset button ka color */
+    .reset-btn {
+      background-color: #ccc;
+      color: black;
+    }
+
+    .reset-btn:hover {
+      background-color: #aaa;
+    }
+
+    /* Button group ko flex se space-between kiya hai */
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    /* Mobile responsive ke liye media query */
+    @media (max-width: 500px) {
+      .button-group {
+        flex-direction: column; /* Button ek ke neeche aayenge */
+        gap: 10px;
+      }
+
+      button {
+        width: 100%; /* Button full width ho jaye */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Form ka outer box -->
+  <div class="form-container">
+    <h2>Basic Information Form</h2> <!-- Form ka heading -->
+
+    <!-- Yahan se form start hoti hai -->
+    <form>
+      <!-- Name input field -->
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <!-- Mobile number input field -->
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="e.g. 9876543210" required>
+
+      <!-- Email input field -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <!-- Gender radio buttons -->
+      <label>Gender</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+
+      <!-- Education checkboxes -->
+      <label>Education Done</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="education" value="High School"> High School</label>
+        <label><input type="checkbox" name="education" value="Diploma"> Diploma</label>
+        <label><input type="checkbox" name="education" value="Graduation"> Graduation</label>
+        <label><input type="checkbox" name="education" value="Post Graduation"> Post Graduation</label>
+      </div>
+
+      <!-- Tea pasand hai ya nahi -->
+      <label for="tea">Do you like tea?</label>
+      <select id="tea" name="tea" required>
+        <option value="" disabled selected>Select an option</option> <!-- Placeholder -->
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Sometimes">Sometimes</option>
+      </select>
+
+      <!-- Buttons for submit and reset -->
+      <div class="button-group">
+        <button type="submit" class="submit-btn">Submit</button>
+        <button type="reset" class="reset-btn">Reset</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
