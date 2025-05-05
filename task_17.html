@@ -3,9 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Exception Handling</title>
+    <style>
+        /* Modern color scheme and styling */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --background-color: #f8f9fa;
+            --card-bg-color: #ffffff;
+            --code-bg-color: #1d1e22;
+            --code-color: #f8f8f2;
+            --text-color: #333333;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Basic styling with smooth transitions */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Container with better spacing and layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Program cards with hover effects */
+        .program-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 .program-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced code box with syntax highlighting colors */
+        .code-box {
+            background-color: var(--code-bg-color);
+            color: var(--code-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .code-box .keyword {
+            color: #ff79c6;
+        }
+
+        .code-box .string {
+            color: #f1fa8c;
+        }
+
+        .code-box .number {
+            color: #bd93f9;
+        }
+
+        .code-box .function {
+            color: #50fa7b;
+        }
+
+        .code-box .comment {
+            color: #6272a4;
+        }
+
+        /* Improved button styling with animation */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Button icons */
+        .button-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Improved output section styling */
+        .output {
+            background-color: #f3f4f6;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            overflow-wrap: break-word;
+            position: relative;
+        }
+
+        .output.has-output {
+            background-color: #e8f5e9;
+        }
+
+        .output.has-error {
+            background-color: #ffebee;
+            border-left: 4px solid #ff5252;
+        }
+
+        .output-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Input styling for interactive examples */
+        .input-group {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .program-card {
+                padding: 15px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Updating Soon...</h1>
+    <header>
+        <h1>JavaScript Exception Handling</h1>
+        <div class="subtitle">Interactive examples of try-catch, throw, and finally statements</div>
+    </header>
+
+    <div class="container">
+        <!-- Program 1 -->
+        <div class="program-card">
+            <h2><span class="program-number">1</span> Handle Undeclared Variable Exception</h2>
+            <div class="code-box">
+<span class="function">function</span> printUndeclaredVariable() {
+  <span class="keyword">try</span> {
+    <span class="comment">// Attempting to use a variable that hasn't been declared</span>
+    console.log(undeclaredVariable);
+  } <span class="keyword">catch</span> (error) {
+    console.log(<span class="string">"An error occurred:"</span>, error.name);
+    console.log(<span class="string">"Error message:"</span>, error.message);
+    <span class="keyword">return</span> <span class="string">"Handled the exception for undeclared variable"</span>;
+  }
+}
+
+<span class="keyword">const</span> result = printUndeclaredVariable();
+console.log(result);</div>
+            <div class="buttons-container">
+                <button onclick="runUndeclaredVariable()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output1')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output1" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output1-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program-card">
+            <h2><span class="program-number">2</span> Throw "Divide by Zero" Error</h2>
+            <div class="code-box">
+<span class="function">function</span> divideNumbers(numerator, denominator) {
+  <span class="keyword">try</span> {
+    <span class="keyword">if</span> (denominator === 0) {
+      <span class="comment">// Throw a custom error when division by zero is attempted</span>
+      <span class="keyword">throw new</span> Error(<span class="string">"Divide by Zero error: Cannot divide by zero!"</span>);
+    }
+    
+    <span class="keyword">const</span> result = numerator / denominator;
+    <span class="keyword">return</span> <span class="string">`${numerator} / ${denominator} = ${result}`</span>;
+  } <span class="keyword">catch</span> (error) {
+    console.error(<span class="string">"Exception caught:"</span>, error.message);
+    <span class="keyword">return</span> error.message;
+  }
+}
+
+<span class="keyword">const</span> numerator = 10;
+<span class="keyword">const</span> denominator = 0;
+<span class="keyword">const</span> divisionResult = divideNumbers(numerator, denominator);
+console.log(divisionResult);</div>
+            <div class="input-group">
+                <div>
+                    <label for="numerator-input">Numerator:</label>
+                    <input type="number" id="numerator-input" value="10">
+                </div>
+                <div>
+                    <label for="denominator-input">Denominator:</label>
+                    <input type="number" id="denominator-input" value="0">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runDivideByZero()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output2')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output2" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output2-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program-card">
+            <h2><span class="program-number">3</span> Throw "Out of Bound" Error for Array</h2>
+            <div class="code-box">
+<span class="function">function</span> getArrayElement(array, index) {
+  <span class="keyword">try</span> {
+    <span class="comment">// Check if the index is valid for the array</span>
+    <span class="keyword">if</span> (index < 0 || index >= array.length) {
+      <span class="keyword">throw new</span> RangeError(<span class="string">`Out of Bound Error: Index ${index} is outside the valid range [0, ${array.length - 1}]`</span>);
+    }
+    
+    <span class="keyword">return</span> <span class="string">`Element at index ${index} is: ${array[index]}`</span>;
+  } <span class="keyword">catch</span> (error) {
+    console.error(<span class="string">"Exception caught:"</span>, error.message);
+    <span class="keyword">return</span> error.message;
+  }
+}
+
+<span class="keyword">const</span> fruits = ["apple", "banana", "cherry", "date"];
+<span class="keyword">const</span> indexToAccess = 5; <span class="comment">// This index doesn't exist</span>
+<span class="keyword">const</span> arrayResult = getArrayElement(fruits, indexToAccess);
+console.log(arrayResult);</div>
+            <div class="input-group">
+                <div>
+                    <label for="array-input">Array elements (comma-separated):</label>
+                    <input type="text" id="array-input" value="apple, banana, cherry, date">
+                </div>
+                <div>
+                    <label for="index-input">Index to access:</label>
+                    <input type="number" id="index-input" value="5">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runOutOfBoundError()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output3')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output3" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output3-content">Run the program to see the output</div>
+            </div>
+        </div>
+
+        <!-- Program 4 -->
+        <div class="program-card">
+            <h2><span class="program-number">4</span> Exception Handling with Finally Statement</h2>
+            <div class="code-box">
+<span class="function">function</span> processData(data) {
+  <span class="comment">// Initialize a resource or state that needs to be cleaned up</span>
+  <span class="keyword">let</span> processingComplete = false;
+  <span class="keyword">let</span> result = null;
+
+  <span class="keyword">try</span> {
+    console.log(<span class="string">"Starting data processing..."</span>);
+    
+    <span class="comment">// Simulate data processing that might fail</span>
+    <span class="keyword">if</span> (!data || data.trim() === "") {
+      <span class="keyword">throw new</span> Error(<span class="string">"Invalid data: Cannot process empty input"</span>);
+    }
+    
+    <span class="comment">// Process the valid data</span>
+    result = <span class="string">`Processed: ${data.toUpperCase()}`</span>;
+    processingComplete = true;
+    
+    <span class="keyword">return</span> result;
+    
+  } <span class="keyword">catch</span> (error) {
+    console.error(<span class="string">"Error during processing:"</span>, error.message);
+    <span class="keyword">return</span> error.message;
+    
+  } <span class="keyword">finally</span> {
+    <span class="comment">// This block always executes, regardless of success or failure</span>
+    <span class="keyword">const</span> status = processingComplete ? 
+      <span class="string">"Processing completed successfully"</span> : 
+      <span class="string">"Processing failed"</span>;
+    
+    console.log(<span class="string">`Cleanup operations executed. Status: ${status}`</span>);
+    console.log(<span class="string">"Resource cleanup complete!"</span>);
+  }
+}
+
+<span class="keyword">const</span> inputData = ""; <span class="comment">// Empty input to trigger the error</span>
+<span class="keyword">const</span> processingResult = processData(inputData);
+console.log(<span class="string">"Final result:"</span>, processingResult);</div>
+            <div class="input-group">
+                <div>
+                    <label for="data-input">Enter data to process:</label>
+                    <input type="text" id="data-input" value="" placeholder="Leave empty to trigger error">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <button onclick="runFinallyStatement()"><span class="button-icon">▶</span> Run Program</button>
+                <button onclick="clearOutput('output4')"><span class="button-icon">✖</span> Clear Output</button>
+            </div>
+            <div id="output4" class="output">
+                <span class="output-label">OUTPUT</span>
+                <div id="output4-content">Run the program to see the output</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 JavaScript Exception Handling - Interactive code examples</p>
+    </footer>
+    <script>
+    /* Output clear karne wali function */
+    function clearOutput(outputId) {
+        // Output element ke andar content ko default message se replace karo
+        document.getElementById(outputId + '-content').innerText = 'Run the program to see the output';
+    
+        // Agar output element mein animation ya styling lagi ho, toh usko hata do
+        document.getElementById(outputId).classList.remove('has-output', 'has-error');
+    }
+    
+    /* Output ko update karne wali function (animation ke saath) */
+    function updateOutput(outputId, text, isError = false) {
+        // Output element ko get karo jisme result show hoga
+        const outputElement = document.getElementById(outputId);
+    
+        // Uske andar ke content element ko get karo
+        const contentElement = document.getElementById(outputId + '-content');
+        
+        // "\n" ko <br> se replace karo taaki HTML mein new line aaye
+        const formattedText = text.replace(/\n/g, '<br>');
+        
+        // Output element mein animation ya style apply karo
+        outputElement.classList.add('has-output');
+        if (isError) {
+            outputElement.classList.add('has-error');
+        } else {
+            outputElement.classList.remove('has-error');
+        }
+        
+        // Formatted text ko output element mein dikhayein
+        contentElement.innerHTML = formattedText;
+    }
+    
+    /* Program 1: Handle Undeclared Variable Exception */
+    function runUndeclaredVariable() {
+        function printUndeclaredVariable() {
+            try {
+                // Attempting to use a variable that hasn't been declared
+                console.log(undeclaredVariable);
+            } catch (error) {
+                return {
+                    errorName: error.name,
+                    errorMessage: error.message,
+                    result: "Handled the exception for undeclared variable"
+                };
+            }
+        }
+
+        try {
+            const result = printUndeclaredVariable();
+            
+            // Output dikhayein
+            updateOutput('output1', 
+                `An error occurred: ${result.errorName}\n` +
+                `Error message: ${result.errorMessage}\n` +
+                `${result.result}`
+            );
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output1', `Unexpected error: ${error.message}`, true);
+        }
+    }
+    
+    /* Program 2: Throw "Divide by Zero" Error */
+    function runDivideByZero() {
+        function divideNumbers(numerator, denominator) {
+            try {
+                if (denominator === 0) {
+                    // Throw a custom error when division by zero is attempted
+                    throw new Error("Divide by Zero error: Cannot divide by zero!");
+                }
+                
+                const result = numerator / denominator;
+                return {
+                    success: true,
+                    message: `${numerator} / ${denominator} = ${result}`
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    message: error.message
+                };
+            }
+        }
+
+        try {
+            // Input fields se values lo
+            const numerator = parseFloat(document.getElementById('numerator-input').value);
+            const denominator = parseFloat(document.getElementById('denominator-input').value);
+            
+            // Check if inputs are valid numbers
+            if (isNaN(numerator) || isNaN(denominator)) {
+                throw new Error("Please enter valid numbers for both numerator and denominator.");
+            }
+            
+            const result = divideNumbers(numerator, denominator);
+            
+            // Output dikhayein
+            if (result.success) {
+                updateOutput('output2', result.message);
+            } else {
+                updateOutput('output2', `Exception caught: ${result.message}`, true);
+            }
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output2', `Error: ${error.message}`, true);
+        }
+    }
+    
+    /* Program 3: Throw "Out of Bound" Error for Array */
+    function runOutOfBoundError() {
+        function getArrayElement(array, index) {
+            try {
+                // Check if the index is valid for the array
+                if (index < 0 || index >= array.length) {
+                    throw new RangeError(`Out of Bound Error: Index ${index} is outside the valid range [0, ${array.length - 1}]`);
+                }
+                
+                return {
+                    success: true,
+                    message: `Element at index ${index} is: ${array[index]}`
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    message: error.message
+                };
+            }
+        }
+
+        try {
+            // Input fields se values lo
+            const arrayInput = document.getElementById('array-input').value;
+            const indexToAccess = parseInt(document.getElementById('index-input').value);
+            
+            // Check if index is a valid number
+            if (isNaN(indexToAccess)) {
+                throw new Error("Please enter a valid number for the index.");
+            }
+            
+            // Create array from input
+            let fruits;
+            if (arrayInput.trim() === '') {
+                fruits = ["apple", "banana", "cherry", "date"];
+            } else {
+                fruits = arrayInput.split(',').map(item => item.trim());
+            }
+            
+            const result = getArrayElement(fruits, indexToAccess);
+            
+            // Output dikhayein
+            if (result.success) {
+                updateOutput('output3', result.message);
+            } else {
+                updateOutput('output3', `Exception caught: ${result.message}`, true);
+            }
+        } catch (error) {
+            // Agar error aaye toh usse show karo
+            updateOutput('output3', `Error: ${error.message}`, true);
+        }
+    }
+    
+    /* Program 4: Exception Handling with Finally Statement */
+    function runFinallyStatement() {
+        function processData(data) {
+            // Initialize variables to track execution flow
+            let processingComplete = false;
+            let result = null;
+            let logMessages = [];
+            
+            try {
+                logMessages.push("Starting data processing...");
+                
+                // Simulate data processing that might fail
+                if (!data || data.trim() === "") {
+                    throw new Error("Invalid data: Cannot process empty input");
+                }
+                
+                // Process the valid data
+                result = `Processed: ${data.toUpperCase()}`;
+                processingComplete = true;
+                
+                return {
+                    success: true,
+                    result: result,
+                    logs: logMessages,
+                    processingComplete: processingComplete
+                };
+                
+            } catch (error) {
+                logMessages.push(`Error during processing: ${error.message}`);
+                
+                return {
+                    success: false,
+                    result: error.message,
+                    logs: logMessages,
+                    processingComplete: processingComplete
+                };
+                
+            } finally {
+                // This block always executes, regardless of success or failure
+                const status = processingComplete ? 
+                    "Processing completed successfully" : 
+                    "Processing failed";
+                
+                logMessages.push(`Cleanup operations executed. Status: ${status}`);
+                logMessages.push("Resource cleanup complete!");
+                
+                // Note: We can't return anything here as it would override the return from try/catch
+            }
+        }
+
+        try {
+            // Input field se data lo
+            const inputData = document.getElementById('data-input').value;
+            
+            // Process the data
+            const result = processData(inputData);
+            
+            // Combine all log messages and the final result
+            let outputText = result.logs.join("\n");
+            outputText += `\nFinal result: ${result.result}`;
+            
+            // Output dikhayein with appropriate styling
+            updateOutput('output4', outputText, !result.success);
+        } catch (error) {
+            // Agar unexpected error aaye toh usse show karo
+            updateOutput('output4', `Unexpected error: ${error.message}`, true);
+        }
+    }
+    </script>    
 </body>
 </html>
