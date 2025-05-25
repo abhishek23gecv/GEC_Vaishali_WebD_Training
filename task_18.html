@@ -1,11 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Management SQL Tasks</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .task-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #007bff;
+      text-align: left;
+    }
+
+    pre {
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+    }
+
+    code {
+      color: #e83e8c;
+    }
+
+    /* Centered example card */
+    .example-card {
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+
+    /* Responsive table wrapper */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 15px;
+    }
+
+    .sample-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      min-width: 600px; /* Ensures horizontal scroll on smaller screens */
+    }
+
+    .sample-table th,
+    .sample-table td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+
+    .sample-table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .sample-table th,
+      .sample-table td {
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+
+      pre {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Updating Soon...</h1>
+
+  <h1>Library Management SQL Tasks</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <div class="task-title">1. Create Database</div>
+      <pre><code>CREATE DATABASE library;</code></pre>
+    </div>
+
+    <div class="card">
+      <div class="task-title">2. Delete Database</div>
+      <pre><code>DROP DATABASE library;</code></pre>
+    </div>
+
+    <div class="card">
+      <div class="task-title">3. Create Table: book_records</div>
+      <pre><code>CREATE TABLE book_records (
+  Book_Library_No INT PRIMARY KEY,
+  Book_Name VARCHAR(100),
+  Author_Name VARCHAR(100),
+  Book_Edition VARCHAR(50),
+  Price DECIMAL(8,2)
+);</code></pre>
+    </div>
+
+    <div class="card">
+      <div class="task-title">4. Delete Table</div>
+      <pre><code>DROP TABLE book_records;</code></pre>
+    </div>
+
+    <div class="card example-card">
+      <div class="task-title">📚 Example: book_records Table View</div>
+      <div class="table-wrapper">
+        <table class="sample-table">
+          <thead>
+            <tr>
+              <th>Book_Library_No</th>
+              <th>Book_Name</th>
+              <th>Author_Name</th>
+              <th>Book_Edition</th>
+              <th>Price (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>101</td>
+              <td>Let Us C</td>
+              <td>Yashavant Kanetkar</td>
+              <td>16th</td>
+              <td>450.00</td>
+            </tr>
+            <tr>
+              <td>102</td>
+              <td>Clean Code</td>
+              <td>Robert C. Martin</td>
+              <td>1st</td>
+              <td>750.50</td>
+            </tr>
+            <tr>
+              <td>103</td>
+              <td>Introduction to Algorithms</td>
+              <td>CLRS</td>
+              <td>3rd</td>
+              <td>999.99</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>
