@@ -2,8 +2,8 @@
 
 Welcome to the **GEC Vaishali Web Development Training** repository! This project is created for demonstrating the fundamentals of web development using HTML, CSS and Js. Actually this is created for practicing my skills during training of Full-stack using LAMP by ATPLC. So you can see many tasks in this repo which can be useful for newbies just like me for now.
 
--**Go to tasks branch for checking my all tasks.**
-or
+- **Go to tasks branch for checking my all tasks.**
+   \ or
 - **Click here**:[Task-Manager Webpage](https://github.com/abhishek23gecv/GEC_Vaishali_WebD_Training)
 
 ---
