@@ -1,4 +1,4 @@
-# 🌐 Personal Web Homepage
+# 🌐 Task Manager Web Homepage
 
 Welcome to the **Task Manager Web Homepage** project — a stylish and responsive personal landing page built with HTML and CSS. It serves as an introduction to the developer, showcasing basic navigation, personal info, and social media links.
 
