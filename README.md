@@ -1,6 +1,6 @@
 # 🌐 GEC Vaishali Web Development Training
 
-Welcome to the **GEC Vaishali Web Development Training** repository! This repo is created for demonstrating the fundamentals of web development using HTML, CSS and JavaScript. Actually this is created for practicing my skills during training of Full-stack using LAMP by ATPLC. So you can see many tasks in this repo which can be useful for newbies just like me for now.
+Welcome to the **GEC Vaishali Web Development Training** repository! This repo is created for demonstrating the fundamentals of web development using HTML, CSS and JavaScript. Actually this is created for practicing my skills during training of Full-stack using LAMP by ATPLC. So you can see many tasks in this repo which can be useful for newbies just like me as for now.
 
 - **Go to tasks branch for checking my all tasks**
    ,or
